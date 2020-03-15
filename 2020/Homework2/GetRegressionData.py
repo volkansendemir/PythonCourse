@@ -1,3 +1,4 @@
+import lxml                         #this is not directly used, but indirectly needed for line 23
 import pandas as pd
 import requests as req              #library that will post XHR and retrieve HTML
 from bs4 import BeautifulSoup       #library that will parse HTML response of the XHR
