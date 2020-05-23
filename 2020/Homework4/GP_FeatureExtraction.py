@@ -73,5 +73,6 @@ run_analysis()
 report_analysis()
 
 #I have run this with 20 reps and found count as best performing, yet it switches between count and tfid so I can't say
-#anything conclusive about the best performing. However, the bigram does perform worst in all cases.
+#anything conclusive about the best performing. Since tfid only normalizes for number of word repetitions I could perhaps
+#say that individual words don't repeat that much. However, the bigram does perform worst in all cases.
 #I also fooled around with nltk but I didn't add it in here.
