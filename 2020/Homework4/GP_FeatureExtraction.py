@@ -57,12 +57,12 @@ regressor = GaussianProcessRegressor(kernel=rbf, alpha=1e-7)
 
 #I initialize vectorizers here
 count_vectorizer = CountVectorizer()
-tfid_vectorizer = TfidfVectorizer()
+tfidf_vectorizer = TfidfVectorizer()
 bigram_vectorizer = CountVectorizer(ngram_range=(2, 2), token_pattern=r'\b\w+\b', min_df=1)
 
 #I place vectorizers and their names in numpy arrays. I initialize their scores as zeros.
-vectorizers = np.array([count_vectorizer, tfid_vectorizer, bigram_vectorizer])
-vectorizer_names = np.array(["count", "tfid", "bigram"])
+vectorizers = np.array([count_vectorizer, tfidf_vectorizer, bigram_vectorizer])
+vectorizer_names = np.array(["count", "tfidf", "bigram"])
 vectorizer_results = np.zeros(len(vectorizers))
 
 #I want to repeat the fitting a number of times as this process is random and I want to see a pattern.
@@ -72,7 +72,7 @@ len_vectorizers = len(vectorizers)
 run_analysis()
 report_analysis()
 
-#I have run this with 20 reps and found count as best performing, yet it switches between count and tfid so I can't say
-#anything conclusive about the best performing. Since tfid only normalizes for number of word repetitions I could perhaps
+#I have run this with 20 reps and found count as best performing, yet it switches between count and tfidf so I can't say
+#anything conclusive about the best performing. Since tfidf only normalizes for number of word repetitions I could perhaps
 #say that individual words don't repeat that much. However, the bigram does perform worst in all cases.
 #I also fooled around with nltk but I didn't add it in here.
