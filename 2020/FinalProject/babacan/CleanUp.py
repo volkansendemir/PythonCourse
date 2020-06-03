@@ -160,11 +160,9 @@ def _print_progress_bar(iteration, total, job="", prefix="", suffix="", decimals
         sys.stdout.flush()
 
 
-
 def clean_up(path):
     global df
-    #df = pd.read_csv(f"{path}babacan_eksisozluk.csv", encoding="utf-8-sig")
-    df = pd.read_csv(f"{path}stem.csv", encoding="utf-8-sig")
+    df = pd.read_csv(f"{path}babacan_eksisozluk.csv", encoding="utf-8-sig")
     df["clean"] = df["content"]
     _remove_entry_links("Removing entry links")
     _remove_bkz("Removing bkz")
@@ -174,15 +172,11 @@ def clean_up(path):
     #_fix_letters("Fixing Turkish letters")
     #df = df[df["clean"] != ""]
     df["corrected"] = df["clean"]
-    _auto_correct("Correcting typos")
+    #_auto_correct("Correcting typos")#Takes a long time, be warned
     df["stem"] = df["corrected"]
     _make_stem("Finding stems")
     df = df[df["clean"] != ""]
     sys.stdout.write("Writing to csv.\r")
-    #df.to_csv(f"{path}babacan_eksisozluk_clean.csv", index=False, encoding="utf-8-sig")
-    df.to_csv(f"{path}stem.csv", index=False, encoding="utf-8-sig")
+    df.to_csv(f"{path}babacan_eksisozluk_clean.csv", index=False, encoding="utf-8-sig")
     print("Writing to csv completed.")
     print("Clean-up completed.\n\n")
-
-
-
