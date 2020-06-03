@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import sys
 import lxml
+import os
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138"
 headers = {"user-agent": user_agent}
@@ -91,6 +92,8 @@ def download(path):
         _analyze_topic(topics, topic, num_topic)
 
     print("Writing to csv.")
+    if not os.path.isdir(f"{path}"):
+        os.makedirs(f"{path}")
     df.to_csv(f"{path}babacan_eksisozluk.csv", index=False, encoding="utf-8-sig")
     print("Writing to csv completed.")
     print("Data download completed.\n\n")
